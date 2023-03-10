@@ -29,17 +29,31 @@ function random(min,max) {
     .NumberFormat('ru-RU', {style: 'currency', currency: convert.name})
     .format(sum * initial.mult / convert.mult)
  }
- //console.log(convert( 1000, 'RUB', 'USD'));
+ console.log(convert( 1000, 'RUB', 'USD'));
+
 const dice = ['d4', 'd6', 'd8', 'd10', 'd12', 'd16', 'd20']
 const d6 = [1,2,3,4,5,6]
 
 
-function cube (res) {
+// function cube (res) {
     
-    let diceRandom = dice[(Math.floor(Math.random() * (dice.length)))]
-    let d6Random = d6[(Math.floor(Math.random() * (d6.length)))]
+//     let diceRandom = dice[(Math.floor(Math.random() * (dice.length)))]
+//     let d6Random = d6[(Math.floor(Math.random() * (d6.length)))]
 
-    res =  d6Random + diceRandom
-    return res
+//     res =  d6Random + diceRandom
+//     return res
+// }
+// console.log(cube());
+
+
+function cube (res) {
+    // const diceRandom = dice[random(0, dice.length -1)]
+    // const d6Random = dice[random(0, dice.length -1)]
+    // res = d6Random + diceRandom
+    res = dice[random(0, dice.length -1)] + dice[random(0, dice.length -1)]
+
+    return res 
 }
+
 console.log(cube());
+
