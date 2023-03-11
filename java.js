@@ -1,94 +1,85 @@
+// let count = 5;
 
-
-const user = {
-    name: 'Vasya',
-    birthday: '03/09/2022'
-}
-
-function date () {
-    let out = ''
-    let now = new Date()
-    let nowDay = now.getDate()
-    let nowMonth = now.getMonth() + 1
-
-    let num = user.birthday.split('/')
+// const interval = setInterval(() => {
     
-    for(let i = 0; i < num.length; i++){
-          parseInt(num[i], 10)
-         
-    }
+//   if(count < 10)  console.log('00:0'+ count + ' '+'Упражнение');
+//   else if(count > 10) console.log('00:'+ count +' '+ 'Упражнение');
 
-    if(num[0] == nowMonth && num[1] == nowDay) out = 'BIRTHDAY'
-    else out = 'ЖДИ';
+//   count -= 1;
 
-    return out
-   
-    
-   
-}
+// }, 1000);
 
- console.log(date()+ ' ' + ': первый способ');
- 
-function date1() {
-    let out = ''
+// const timeout = setTimeout(() => {
+//     console.log('Готово'+ ' '+'Упражнение');
+//     clearInterval(interval)
+// }, 5000);
 
-    let birthdayDay = new Date(user.birthday).getDate()
-    let birthdayMonth = new Date(user.birthday).getMonth()
+// function pizzaTimer(ms) {
+//     const time = new Date().getTime() + ms
+//     const interval = setInterval(() => {
+//        console.log(
+//         new Intl.DateTimeFormat('ru-RU',{
+//             minute: "numeric",
+//             second: "numeric"
+//         }).format(time + 100 - new Date()) +' урок'
+//        );
+//     }, 1000);
 
-    let todayDay = new Date().getDate()
-    let todayMonth = new Date().getMonth()
-    
+//     setTimeout (() => {
+//         console.log('Пицца');
+//         clearInterval(interval)
+//     },ms)
+// }
+//     console.log(pizzaTimer(5000));// (как мне убрать undefined в самом начале ?)
+
+/// ПЕРВЫЙ ВАРИАНТ !!! 
+
+const month = document.querySelector('#month')
+const days = document.querySelector('#days')
+const hours = document.querySelector('#hours')
+const minute = document.querySelector('#minutes')
+const second = document.querySelector('#seconds')
+
+// const nowYear = new Date().getFullYear()
+// const nextYear = new Date(`January 01 ${nowYear + 1} 00:00:00`)
+// const date = new Date()
+
+// function a() {
+//   month.innerHTML = 11 - new Date().getMonth() // месяцев
+//   days.innerHTML = Math.floor((nextYear - date)/86400000); // дней
+//   hours.innerHTML = 23 - new Date().getHours() //  часов
+//   minute.innerHTML = 59 - new Date().getMinutes() // минут
+//   second.innerHTML = 59 - new Date().getSeconds() // секунд
+// }
+// a()
+// setInterval(a,1000)
+
+
+// /// ВТОРОЙ ВАРИАНТ !!!
+
+const nowYear1 = new Date().getFullYear()
+const nextYear1 = new Date(`January 01 ${nowYear1 + 1} 00:00:00`)
+function xxx () {
+const nowTime = new Date()
+const diff = nextYear1 - nowTime
+
+let = monthLeft =  Math.floor(diff / 86_400_000) % 12 + 2
+// Перевод в дни
+let daysLeft = Math.floor(diff / 86_400_000)
+//часов всего
+let hoursLeft = Math.floor(diff / 1000 / 60 / 60 ) % 24 
+//минут всего
+let minutesLeft = Math.floor(diff / 1000 / 60 ) % 60
+// секунд всего
+let secondsLeft = Math.floor(diff / 1000 ) % 60
+
+  month.innerHTML = monthLeft
+  days.innerHTML = daysLeft
+  hours.innerHTML = hoursLeft
+  minute.innerHTML = minutesLeft
+  second.innerHTML = secondsLeft
   
-   if(todayDay == birthdayDay && birthdayMonth == todayMonth) out = 'birthday'
-    else out = 'wait';
-
-    return out 
 }
+xxx()
 
-console.log(date1()+ ' ' + ': второй способ');
-
-
-function isBirthDay (a) {
-    const birthdaydayData = new Date(a.birthday);
-    const now = new Date()
-
-    if(birthdaydayData.getDate() !== now.getDate()) return false
-    if(birthdaydayData.getMonth() !== now.getMonth()) return false
-
-    return true
-    
-}
-
-console.log(isBirthDay(user)+ ' ' + ': урок');
-
-let a = '2009-10-10'
-
-function ee (year){
-    
-    const now = new Date()
-    const b = new Date(year)
-    if((now.getFullYear() - b.getFullYear()) < 14) return false
-
-    return true
-    
-
-}
-console.log(ee(a) + ' ' + ': Домашнее задание');
-
-//console.log(Math.round(new Date(a) / 365));
-
-function z (t) {
-
-    const now = new Date()
-    const b = new Date(t)
-    let year = (now.getFullYear() - b.getFullYear()) * 365  // дней в году
-    let wonth = ((now.getMonth() + 1 - b.getMonth() + 1) * 30) // дней в месяце
-    let days = now.getDate() - b.getDate() // дни
-    let minDay = 14 * 365
-
-    if(year + wonth + days > minDay) return true
-    else return false
-   // return (year + wonth + days > war);
-   
-}
-console.log(z(a) + ' ' + ': Домашнее задание 2');
+setInterval(xxx)
