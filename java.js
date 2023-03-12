@@ -1,85 +1,94 @@
-// let count = 5;
+// let produckt = { id: 1, name: 'Bread', count: 1};
 
-// const interval = setInterval(() => {
-    
-//   if(count < 10)  console.log('00:0'+ count + ' '+'Упражнение');
-//   else if(count > 10) console.log('00:'+ count +' '+ 'Упражнение');
-
-//   count -= 1;
-
-// }, 1000);
-
-// const timeout = setTimeout(() => {
-//     console.log('Готово'+ ' '+'Упражнение');
-//     clearInterval(interval)
-// }, 5000);
-
-// function pizzaTimer(ms) {
-//     const time = new Date().getTime() + ms
-//     const interval = setInterval(() => {
-//        console.log(
-//         new Intl.DateTimeFormat('ru-RU',{
-//             minute: "numeric",
-//             second: "numeric"
-//         }).format(time + 100 - new Date()) +' урок'
-//        );
-//     }, 1000);
-
-//     setTimeout (() => {
-//         console.log('Пицца');
-//         clearInterval(interval)
-//     },ms)
+// const Mag = function (){
+//   this.id = produckt.id
+//   this.name = produckt.name
+//   this.count = produckt.count
 // }
-//     console.log(pizzaTimer(5000));// (как мне убрать undefined в самом начале ?)
+// produckt = new Mag
 
-/// ПЕРВЫЙ ВАРИАНТ !!! 
 
-const month = document.querySelector('#month')
-const days = document.querySelector('#days')
-const hours = document.querySelector('#hours')
-const minute = document.querySelector('#minutes')
-const second = document.querySelector('#seconds')
-
-// const nowYear = new Date().getFullYear()
-// const nextYear = new Date(`January 01 ${nowYear + 1} 00:00:00`)
-// const date = new Date()
-
-// function a() {
-//   month.innerHTML = 11 - new Date().getMonth() // месяцев
-//   days.innerHTML = Math.floor((nextYear - date)/86400000); // дней
-//   hours.innerHTML = 23 - new Date().getHours() //  часов
-//   minute.innerHTML = 59 - new Date().getMinutes() // минут
-//   second.innerHTML = 59 - new Date().getSeconds() // секунд
+// Mag.prototype.plus = function () {
+//     this.count++
+//     if(this.count = isNaN) return this.count = 1 // чтобы корзина не была пустой
+   
+   
+//  }
+//  Mag.prototype.del = function () {
+//   this.count--
+//   if(this.count < 0) delete this.count // чтобы корзина не была пустой
 // }
-// a()
-// setInterval(a,1000)
+// produckt.plus() //добавляет 
+// produckt.del() //удаляет 
+// produckt.del()
+// produckt.plus()
 
+//  console.log(produckt);
 
-// /// ВТОРОЙ ВАРИАНТ !!!
+/// Упрвжнение
 
-const nowYear1 = new Date().getFullYear()
-const nextYear1 = new Date(`January 01 ${nowYear1 + 1} 00:00:00`)
-function xxx () {
-const nowTime = new Date()
-const diff = nextYear1 - nowTime
+// const produckt = { id: 1, name: 'Bread', count: 1};
 
-let = monthLeft =  Math.floor(diff / 86_400_000) % 12 + 2
-// Перевод в дни
-let daysLeft = Math.floor(diff / 86_400_000)
-//часов всего
-let hoursLeft = Math.floor(diff / 1000 / 60 / 60 ) % 24 
-//минут всего
-let minutesLeft = Math.floor(diff / 1000 / 60 ) % 60
-// секунд всего
-let secondsLeft = Math.floor(diff / 1000 ) % 60
+// const Cart = function() {
 
-  month.innerHTML = monthLeft
-  days.innerHTML = daysLeft
-  hours.innerHTML = hoursLeft
-  minute.innerHTML = minutesLeft
-  second.innerHTML = secondsLeft
-  
+//   this.produckt = []
+
+// }
+
+// Cart.prototype.addProduct = function (produckt) {
+// if(this.produckt.find(produckt => produckt.id === produckt.id)) {
+//   return
+// }
+// this.produckt.push(produckt)
+// }
+
+// Cart.prototype.increaseAmont = function (id){
+//   this.produckt = this.produckt.map(produckt => {
+//     if(produckt.id == id) {
+//       produckt.count++
+//       return produckt
+//     }
+//     return produckt
+//   })
+// }
+
+// Cart.prototype.decreaseAmont = function (id){
+//   this.produckt = this.produckt
+//   .map(produckt => {
+//       if(produckt.id == id) {
+//         produckt.count--
+//         return produckt
+//       }
+//       return produckt
+//     })
+//   .filter(produckt => produckt.count > 0);
+// }
+
+// const cart = new Cart()
+// cart.addProduct(produckt)
+// cart.increaseAmont(1)
+// cart.decreaseAmont(1)
+
+// console.log(cart);
+
+const Person = function (race,name,lang) {
+  this.race = race
+  this.name = name
+  this.lang = lang
 }
-xxx()
 
-setInterval(xxx)
+Person.prototype.speac = function (lang,name) {
+  console.log(lang + " " + name);
+}
+
+
+Person.prototype.weapon = function() {
+  console.log('damadge')
+}
+Person.prototype.spell = function() {
+  console.log('create a spell')
+}
+
+const elf = new Person()
+const orc = new Person()
+console.log(orc.weapon());
