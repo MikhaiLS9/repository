@@ -1,94 +1,101 @@
 
 
-const user = {
-    name: 'Vasya',
-    birthday: '03/09/2022'
-}
 
-function date () {
-    let out = ''
-    let now = new Date()
-    let nowDay = now.getDate()
-    let nowMonth = now.getMonth() + 1
 
-    let num = user.birthday.split('/')
+// class Person {
+//   #login
+//   #passvord
+
+//   constructor (login, passvord){
+//     this.#login = login
+//     this.#passvord = passvord
+//   }
+
+//   createPass (oldPass, newPass){
     
-    for(let i = 0; i < num.length; i++){
-          parseInt(num[i], 10)
-         
+//     if(oldPass === this.#passvord) return true
+    
+//     else return false
+//   }
+// }
+
+
+// let user = new Person('qqqq@mail.ru', '123')
+
+// console.log(user.createPass('321'));
+
+class User {
+  #login
+  #_password
+
+    constructor(login, password){
+      this.#login = login
+      this.#password = password
+    } 
+
+    set #passvord (pass){
+      this.#_password = pass.split('').reverse().join('')
     }
 
-    if(num[0] == nowMonth && num[1] == nowDay) out = 'BIRTHDAY'
-    else out = 'ЖДИ';
+    get #passvord (){
+      return this.#_password.split('').reverse().join('')
+    }
 
-    return out
-   
-    
-   
+    get login () {
+      return this.#login
+    }
+
+    checkPassword (pass){
+      return this.#password === pass
+    }
+
+    changePass(oldPass,newPass){
+      if(!this.checkPassword(oldPass)) {
+        return false
+      }
+      this.#password = newPass
+      return true
+    }
+
 }
 
- console.log(date()+ ' ' + ': первый способ');
- 
-function date1() {
-    let out = ''
+const user = new User('qwe@.ru', '123')
+console.log(user.changePass('123'));
+console.log(user.changePass('123','342'));
+console.log(user);
 
-    let birthdayDay = new Date(user.birthday).getDate()
-    let birthdayMonth = new Date(user.birthday).getMonth()
 
-    let todayDay = new Date().getDate()
-    let todayMonth = new Date().getMonth()
+
+
+
+/////////// Домашняя работа
+
+// class Car {
+//     #brand
+//     #model
+//     #run
+//    constructor (brand,model,run){
+//     this.#brand = brand
+//     this.#model = model
+//     this.#run= run
     
+//   }
+
+//   info(){
+//     console.log(`brand: ${this.#brand}, model: ${this.#model}, run: ${this.#run}`);
+//   }
   
-   if(todayDay == birthdayDay && birthdayMonth == todayMonth) out = 'birthday'
-    else out = 'wait';
+//     set createRun (r) {
+//      this.#run = r
+//   }
 
-    return out 
-}
+//     get createRun () {
+//      return this.#run
+//   }
+// }
 
-console.log(date1()+ ' ' + ': второй способ');
 
+// let carCreate = new Car('mers','600','150000')
 
-function isBirthDay (a) {
-    const birthdaydayData = new Date(a.birthday);
-    const now = new Date()
-
-    if(birthdaydayData.getDate() !== now.getDate()) return false
-    if(birthdaydayData.getMonth() !== now.getMonth()) return false
-
-    return true
-    
-}
-
-console.log(isBirthDay(user)+ ' ' + ': урок');
-
-let a = '2009-10-10'
-
-function ee (year){
-    
-    const now = new Date()
-    const b = new Date(year)
-    if((now.getFullYear() - b.getFullYear()) < 14) return false
-
-    return true
-    
-
-}
-console.log(ee(a) + ' ' + ': Домашнее задание');
-
-//console.log(Math.round(new Date(a) / 365));
-
-function z (t) {
-
-    const now = new Date()
-    const b = new Date(t)
-    let year = (now.getFullYear() - b.getFullYear()) * 365  // дней в году
-    let wonth = ((now.getMonth() + 1 - b.getMonth() + 1) * 30) // дней в месяце
-    let days = now.getDate() - b.getDate() // дни
-    let minDay = 14 * 365
-
-    if(year + wonth + days > minDay) return true
-    else return false
-   // return (year + wonth + days > war);
-   
-}
-console.log(z(a) + ' ' + ': Домашнее задание 2');
+// carCreate.createRun = '2000'
+// console.log(carCreate);
