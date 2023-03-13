@@ -1,94 +1,101 @@
-// let produckt = { id: 1, name: 'Bread', count: 1};
-
-// const Mag = function (){
-//   this.id = produckt.id
-//   this.name = produckt.name
-//   this.count = produckt.count
-// }
-// produckt = new Mag
 
 
-// Mag.prototype.plus = function () {
-//     this.count++
-//     if(this.count = isNaN) return this.count = 1 // чтобы корзина не была пустой
-   
-   
-//  }
-//  Mag.prototype.del = function () {
-//   this.count--
-//   if(this.count < 0) delete this.count // чтобы корзина не была пустой
-// }
-// produckt.plus() //добавляет 
-// produckt.del() //удаляет 
-// produckt.del()
-// produckt.plus()
 
-//  console.log(produckt);
 
-/// Упрвжнение
+// class Person {
+//   #login
+//   #passvord
 
-// const produckt = { id: 1, name: 'Bread', count: 1};
+//   constructor (login, passvord){
+//     this.#login = login
+//     this.#passvord = passvord
+//   }
 
-// const Cart = function() {
-
-//   this.produckt = []
-
+//   createPass (oldPass, newPass){
+    
+//     if(oldPass === this.#passvord) return true
+    
+//     else return false
+//   }
 // }
 
-// Cart.prototype.addProduct = function (produckt) {
-// if(this.produckt.find(produckt => produckt.id === produckt.id)) {
-//   return
-// }
-// this.produckt.push(produckt)
-// }
 
-// Cart.prototype.increaseAmont = function (id){
-//   this.produckt = this.produckt.map(produckt => {
-//     if(produckt.id == id) {
-//       produckt.count++
-//       return produckt
-//     }
-//     return produckt
-//   })
-// }
+// let user = new Person('qqqq@mail.ru', '123')
 
-// Cart.prototype.decreaseAmont = function (id){
-//   this.produckt = this.produckt
-//   .map(produckt => {
-//       if(produckt.id == id) {
-//         produckt.count--
-//         return produckt
-//       }
-//       return produckt
-//     })
-//   .filter(produckt => produckt.count > 0);
-// }
+// console.log(user.createPass('321'));
 
-// const cart = new Cart()
-// cart.addProduct(produckt)
-// cart.increaseAmont(1)
-// cart.decreaseAmont(1)
+class User {
+  #login
+  #_password
 
-// console.log(cart);
+    constructor(login, password){
+      this.#login = login
+      this.#password = password
+    } 
 
-const Person = function (race,name,lang) {
-  this.race = race
-  this.name = name
-  this.lang = lang
+    set #passvord (pass){
+      this.#_password = pass.split('').reverse().join('')
+    }
+
+    get #passvord (){
+      return this.#_password.split('').reverse().join('')
+    }
+
+    get login () {
+      return this.#login
+    }
+
+    checkPassword (pass){
+      return this.#password === pass
+    }
+
+    changePass(oldPass,newPass){
+      if(!this.checkPassword(oldPass)) {
+        return false
+      }
+      this.#password = newPass
+      return true
+    }
+
 }
 
-Person.prototype.speac = function (lang,name) {
-  console.log(lang + " " + name);
-}
+const user = new User('qwe@.ru', '123')
+console.log(user.changePass('123'));
+console.log(user.changePass('123','342'));
+console.log(user);
 
 
-Person.prototype.weapon = function() {
-  console.log('damadge')
-}
-Person.prototype.spell = function() {
-  console.log('create a spell')
-}
 
-const elf = new Person()
-const orc = new Person()
-console.log(orc.weapon());
+
+
+/////////// Домашняя работа
+
+// class Car {
+//     #brand
+//     #model
+//     #run
+//    constructor (brand,model,run){
+//     this.#brand = brand
+//     this.#model = model
+//     this.#run= run
+    
+//   }
+
+//   info(){
+//     console.log(`brand: ${this.#brand}, model: ${this.#model}, run: ${this.#run}`);
+//   }
+  
+//     set createRun (r) {
+//      this.#run = r
+//   }
+
+//     get createRun () {
+//      return this.#run
+//   }
+// }
+
+
+// let carCreate = new Car('mers','600','150000')
+
+// carCreate.createRun = '2000'
+// console.log(carCreate);
